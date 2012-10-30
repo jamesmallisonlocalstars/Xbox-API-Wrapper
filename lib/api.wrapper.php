@@ -53,8 +53,8 @@ class XboxApi {
 		curl_setopt($ch, CURLOPT_URL, $url);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 		curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
-		curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, true);
+		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+		curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
 		curl_setopt($ch, CURLOPT_AUTOREFERER, true);
 		curl_setopt($ch, CURLOPT_TIMEOUT, isset($this->timeout) ? $this->timeout : 8);
 		curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 15);
@@ -77,7 +77,6 @@ class XboxApi {
 	public function fetch_profile($gamertag) {
 		if ($this->valid_gamertag($gamertag)) {
 			$parameters = array('gamertag' => $gamertag);
-
 			return $this->http('profile', $gamertag);
 		}
 
@@ -88,7 +87,6 @@ class XboxApi {
 	public function fetch_games($gamertag) {
 		if ($this->valid_gamertag($gamertag) {
 			$parameters = array('gamertag' => $gamertag);
-
 			return $this->http('games', $gamertag);
 		}
 
@@ -99,7 +97,6 @@ class XboxApi {
 	public function fetch_achievements($gamertag, $gameid) {
 		if ($this->valid_gamertag($gamertag) {
 			$parameters = array('gamertag' => $gamertag, 'gameid' => $gameid);
-
 			return $this->http('achievements', $parameters);
 		}
 
@@ -110,7 +107,6 @@ class XboxApi {
 	public function fetch_friends($gamertag) {
 		if ($this->valid_gamertag($gamertag) {
 			$parameters = array('gamertag' => $gamertag);
-
 			return $this->http('friends', $gamertag);
 		}
 
